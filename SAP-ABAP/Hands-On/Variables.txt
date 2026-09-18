@@ -1,0 +1,27 @@
+CLASS zcl_variable_demo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_variable_demo IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    DATA: lv_name   TYPE string VALUE 'Sam',
+          lv_age    TYPE i      VALUE 25,
+          lv_salary TYPE p LENGTH 8 DECIMALS 2 VALUE '15000.50',
+          lv_active TYPE abap_bool VALUE abap_true.
+
+    out->write( |Name: { lv_name }| ).
+    out->write( |Age: { lv_age }| ).
+    out->write( |Salary: { lv_salary }| ).
+    out->write( |Active: { lv_active }| ).
+
+  ENDMETHOD.
+
+ENDCLASS.

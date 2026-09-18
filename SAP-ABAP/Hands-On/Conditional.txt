@@ -1,0 +1,40 @@
+CLASS zcl_conditional_demo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_conditional_demo IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    " IF / ELSEIF / ELSE
+    DATA(lv_age) = 25.
+    IF lv_age >= 18.
+      out->write( 'Status: Adult' ).
+    ELSEIF lv_age >= 13.
+      out->write( 'Status: Teenager' ).
+    ELSE.
+      out->write( 'Status: Child' ).
+    ENDIF.
+
+    " CASE
+    DATA(lv_day) = 3.
+    CASE lv_day.
+      WHEN 1.
+        out->write( 'Monday' ).
+      WHEN 2.
+        out->write( 'Tuesday' ).
+      WHEN 3.
+        out->write( 'Wednesday' ).
+      WHEN OTHERS.
+        out->write( 'Other Day' ).
+    ENDCASE.
+
+  ENDMETHOD.
+
+ENDCLASS.

@@ -1,0 +1,30 @@
+CLASS zcl_database_demo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_database_demo IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    " Replace ZDEMO_ABAP_FLI with your own released table/CDS view
+    SELECT carrid, connid, fldate, price
+      FROM zdemo_abap_fli
+      FIELDS carrid, connid, fldate, price
+      UP TO 5 ROWS
+      INTO TABLE @DATA(lt_flights).
+
+    IF sy-subrc = 0.
+      out->write( lt_flights ).
+    ELSE.
+      out->write( 'No records found' ).
+    ENDIF.
+
+  ENDMETHOD.
+
+ENDCLASS.

@@ -1,0 +1,42 @@
+CLASS zcl_operations_demo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_operations_demo IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    DATA: lv_num1 TYPE i VALUE 10,
+          lv_num2 TYPE i VALUE 3,
+          lv_sum  TYPE i,
+          lv_diff TYPE i,
+          lv_prod TYPE i,
+          lv_div  TYPE p LENGTH 8 DECIMALS 2,
+          lv_mod  TYPE i.
+
+    lv_sum  = lv_num1 + lv_num2.
+    lv_diff = lv_num1 - lv_num2.
+    lv_prod = lv_num1 * lv_num2.
+    lv_div  = lv_num1 / lv_num2.
+    lv_mod  = lv_num1 MOD lv_num2.
+
+    out->write( |Sum: { lv_sum }| ).
+    out->write( |Difference: { lv_diff }| ).
+    out->write( |Product: { lv_prod }| ).
+    out->write( |Division: { lv_div }| ).
+    out->write( |Modulus: { lv_mod }| ).
+
+    " String concatenation
+    DATA(lv_name)  = 'Sam'.
+    DATA(lv_greet) = |Hello { lv_name }!|.
+    out->write( lv_greet ).
+
+  ENDMETHOD.
+
+ENDCLASS.
